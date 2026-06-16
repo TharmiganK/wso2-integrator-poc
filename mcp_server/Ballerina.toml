@@ -1,0 +1,9 @@
+[package]
+org = "tharmigank"
+name = "mcp_server"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "MCP Server"
+
+[build-options]
+sticky = true

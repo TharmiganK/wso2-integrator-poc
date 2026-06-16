@@ -1,0 +1,9 @@
+[package]
+org = "tharmigank"
+name = "hubspot_to_oracledb"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "Hubspot Event To OracleDB"
+
+[build-options]
+sticky = true

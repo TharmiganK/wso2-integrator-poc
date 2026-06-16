@@ -1,0 +1,36 @@
+version: "3.8"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  ACME HR Agent — PostgreSQL Database
+#
+#  Start:   docker compose up -d
+#  Logs:    docker logs -f acme_hr_postgres
+#  Wipe:    docker compose down -v
+#  Connect: docker exec -it acme_hr_postgres psql -U hr_user -d acme_hr
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  postgres-hr:
+    image: postgres:16
+    container_name: acme_hr_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER:     "hr_user"
+      POSTGRES_PASSWORD: "HrUser_2025!"
+      POSTGRES_DB:       "acme_hr"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./sql/02_sample_data.sql:/docker-entrypoint-initdb.d/02_sample_data.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hr_user -d acme_hr"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  postgres_data:
+    driver: local

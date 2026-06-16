@@ -1,0 +1,9 @@
+[package]
+org = "tharmigank"
+name = "sap_s4hana_client"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "SAP S4HANA Client"
+
+[build-options]
+sticky = true

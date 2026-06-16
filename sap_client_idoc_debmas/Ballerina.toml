@@ -1,0 +1,23 @@
+[package]
+org = "tharmigank"
+name = "sap_client_idoc_debmas"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "SAP Client IDoc - DEBMAS"
+
+[build-options]
+sticky = true
+
+[[platform.java21.dependency]]
+path = "resources/sapidoc3.jar"
+groupId = "com.sap"
+artifactId = "com.sap.conn.idoc"
+version = "3.1.*"
+scope = "provided"
+
+[[platform.java21.dependency]]
+path = "resources/sapjco3.jar"
+groupId = "com.sap"
+artifactId = "com.sap.conn.jco"
+version = "3.1.*"
+scope = "provided"

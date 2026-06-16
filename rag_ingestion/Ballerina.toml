@@ -1,0 +1,9 @@
+[package]
+org = "tharmigank"
+name = "rag_ingestion"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "RAG Ingestion"
+
+[build-options]
+sticky = true

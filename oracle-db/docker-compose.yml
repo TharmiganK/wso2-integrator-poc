@@ -1,0 +1,39 @@
+version: "3.8"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  ACME HR Agent — Oracle Database
+#  Image: gvenzl/oracle-free (no Docker login required)
+#
+#  Start:   docker compose up -d
+#  Logs:    docker logs -f acme_hr_oracle
+#  Wipe:    docker compose down -v
+#  Connect: docker exec -it acme_hr_oracle sqlplus hr_user/HrUser_2025!@//localhost:1521/FREEPDB1
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  oracle-hr:
+    image: gvenzl/oracle-free:latest-faststart
+    container_name: acme_hr_oracle
+    restart: unless-stopped
+    environment:
+      ORACLE_PASSWORD:    "AcmeHR_2025!"
+      APP_USER:           "hr_user"
+      APP_USER_PASSWORD:  "HrUser_2025!"
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./sql/00_setup.sh:/container-entrypoint-initdb.d/00_setup.sh
+      - ./sql/01_schema.sql:/opt/oracle/hr_scripts/01_schema.sql
+      - ./sql/02_sample_data.sql:/opt/oracle/hr_scripts/02_sample_data.sql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 20s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+    shm_size: "1g"
+
+volumes:
+  oracle_data:
+    driver: local
