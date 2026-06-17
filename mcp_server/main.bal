@@ -1,5 +1,8 @@
 import ballerina/mcp;
 import ballerina/sql;
+import ballerinax/metrics.logs as _;
+
+import wso2/icp.runtime.bridge as _;
 
 listener mcp:Listener mcpListener = new (listenTo = 9092);
 

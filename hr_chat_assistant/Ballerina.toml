@@ -6,4 +6,6 @@ distribution = "2201.13.4"
 title = "HR Chat Assistant"
 
 [build-options]
+observabilityIncluded = true
+remoteManagement = true
 sticky = true

@@ -254,10 +254,10 @@ function generate_document_id(tag, timestamp, record)
         timestamp_str = tostring(timestamp)
     end
 
-    local message = record["message"] or ""
-    local level = record["level"] or ""
-    local runtime_id = record["icp_runtimeId"] or ""
-    local log_file_path = record["log_file_path"] or ""
+    local message = tostring(record["message"] or "")
+    local level = tostring(record["level"] or "")
+    local runtime_id = tostring(record["icp_runtimeId"] or "")
+    local log_file_path = tostring(record["log_file_path"] or "")
 
     -- Create composite string for hashing using unit separator (U+001F) as delimiter
     -- This control character cannot appear in normal log text, preventing ambiguous keys

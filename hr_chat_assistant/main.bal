@@ -1,5 +1,8 @@
 import ballerina/ai;
 import ballerina/http;
+import ballerinax/metrics.logs as _;
+
+import wso2/icp.runtime.bridge as _;
 
 listener http:Listener chatAgentListener = http:getDefaultListener();
 

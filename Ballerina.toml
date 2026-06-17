@@ -1,3 +1,3 @@
 [workspace]
 title = "PoC"
-packages = ["mcp_server", "hr_chat_assistant", "hubspot_to_oracledb", "rag_ingestion", "sap_client_bapi", "sap_client_idoc_debmas", "sap_client_idoc_orders", "sap_s4hana_client"]
+packages = ["mcp_server", "hr_chat_assistant", "hubspot_to_oracledb", "rag_ingestion", "sap_ecc_events", "sap_client"]
