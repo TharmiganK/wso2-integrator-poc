@@ -62,10 +62,36 @@ oracleDbUser = "<db username>"
 oracleDbPassword = "<db password>"
 ```
 
+## Exposing the Webhook Port with ngrok
+
+HubSpot requires a publicly accessible URL to deliver webhook events. When running locally, use **ngrok** to expose port `8090`:
+
+1. Install ngrok from [ngrok.com](https://ngrok.com) and authenticate:
+
+   ```bash
+   ngrok config add-authtoken <your-auth-token>
+   ```
+
+2. Start a tunnel on port `8090`:
+
+   ```bash
+   ngrok http 8090
+   ```
+
+3. Copy the forwarding URL from the ngrok output (e.g. `https://abc123.ngrok-free.app`) and set it as the `callbackURL` in `Config.toml`:
+
+   ```toml
+   callbackURL = "https://abc123.ngrok-free.app"
+   ```
+
+4. Register the same URL as the webhook endpoint in your HubSpot app settings.
+
+> **Note:** The ngrok URL changes every time you restart the tunnel (on the free plan). Update `callbackURL` and the HubSpot webhook subscription each time you get a new URL, or use a [static domain](https://ngrok.com/docs/getting-started/#step-4-secure-your-app) if available on your plan.
+
 ## Running the Integration
 
 1. Ensure the Oracle Database is running and the `HUBSPOT_CONTACTS` table exists
-2. Ensure the `callbackURL` is publicly reachable and registered as a webhook endpoint in HubSpot
+2. Start the ngrok tunnel on port `8090` and update `callbackURL` in `Config.toml`
 3. Open the `hubspot_to_oracledb` folder in **WSO2 Integrator**
 4. Edit `Config.toml` and fill in all required values
 5. Click **Run** in the WSO2 Integrator toolbar
