@@ -1,11 +1,13 @@
 [package]
 org = "tharmigank"
-name = "sap_client_idoc_orders"
+name = "sap_client"
 version = "0.1.0"
 distribution = "2201.13.4"
-title = "SAP Client IDoc - ORDERS"
+title = "SAP Client"
 
 [build-options]
+observabilityIncluded = true
+remoteManagement = true
 sticky = true
 
 [[platform.java21.dependency]]

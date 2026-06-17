@@ -14,6 +14,13 @@ Config.toml
 # This should not be committed to version control.
 trace_enabled.bal
 
+# File used to enable development-time tracing.
+# This should not be committed to version control.
+trace_enabled.bal
+
 # Logs
 logs/
 .icp_runtime_id
+
+# SAP licensed resources
+resources/
