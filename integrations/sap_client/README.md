@@ -54,7 +54,7 @@ Both `idocDebmasControlRecord` and `idocOrdersControlRecord` are inline records 
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.sap_client]
+[wso2.sap_client]
 sapEccHost = "<ECC host>"
 sapEccSysnr = "00"
 sapEccClientNum = "800"
@@ -81,7 +81,7 @@ idocOrdersControlRecord = {SNDPRN = "<sender>", RCVPRN = "<receiver>"}
 Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
 
 ```toml
-[tharmigank.sap_client]
+[wso2.sap_client]
 sapEccHost      = "<SAP ECC application server hostname or IP>"
 sapEccSysnr     = "<SAP system number e.g. 00>"
 sapEccClientNum = "<SAP client/Mandant number e.g. 800>"
@@ -91,11 +91,11 @@ sapS4hanaHostName = "<SAP S/4HANA Cloud hostname e.g. my123456.s4hana.cloud.sap>
 sapS4hanaUserName = "<SAP S/4HANA username>"
 sapS4hanaPassword = "<SAP S/4HANA password>"
 
-[tharmigank.sap_client.idocDebmasControlRecord]
+[wso2.sap_client.idocDebmasControlRecord]
 SNDPRN = "<sending logical system name for DEBMAS IDocs>"
 RCVPRN = "<receiving logical system name for DEBMAS IDocs>"
 
-[tharmigank.sap_client.idocOrdersControlRecord]
+[wso2.sap_client.idocOrdersControlRecord]
 SNDPRN = "<sending logical system name for ORDERS IDocs>"
 RCVPRN = "<receiving logical system name for ORDERS IDocs>"
 

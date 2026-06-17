@@ -73,7 +73,7 @@ Open `Config.toml` and provide the following values:
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.hr_chat_assistant]
+[wso2.hr_chat_assistant]
 pineconeAPIKey = "<pinecone api key>"
 pineconeSvcURL = "https://<index>.svc.<env>.pinecone.io"
 mcpServerURL = "http://localhost:9092/mcp"
@@ -98,7 +98,7 @@ accessToken = "<jwt access token>"
 Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
 
 ```toml
-[tharmigank.hr_chat_assistant]
+[wso2.hr_chat_assistant]
 pineconeAPIKey = "<Pinecone API key>"
 pineconeSvcURL = "<Pinecone index service URL e.g. https://<index>.svc.<env>.pinecone.io>"
 mcpServerURL   = "http://localhost:9092/mcp"   # keep as-is if MCP Server runs on the default port

@@ -363,7 +363,7 @@ modules = [
 ]
 
 [[package]]
-org = "tharmigank"
+org = "wso2"
 name = "mcp_server"
 version = "0.1.0"
 dependencies = [
@@ -376,7 +376,7 @@ dependencies = [
 	{org = "wso2", name = "icp.runtime.bridge"}
 ]
 modules = [
-	{org = "tharmigank", packageName = "mcp_server", moduleName = "mcp_server"}
+	{org = "wso2", packageName = "mcp_server", moduleName = "mcp_server"}
 ]
 
 [[package]]

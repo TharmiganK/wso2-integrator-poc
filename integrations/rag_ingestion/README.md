@@ -41,7 +41,7 @@ Open `Config.toml` and provide the following values:
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.rag_ingestion]
+[wso2.rag_ingestion]
 sharepointClientId = "<client id>"
 sharepointClientSecret = "<client secret>"
 sharepointTokenUrl = "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token"
@@ -75,7 +75,7 @@ Copy this file, replace all `<...>` placeholders with your actual values. Values
 serviceUrl  = "<WSO2 AI API endpoint URL>"
 accessToken = "<JWT access token for the WSO2 AI API>"
 
-[tharmigank.rag_ingestion_with_sharepoint]
+[wso2.rag_ingestion_with_sharepoint]
 sharepointClientId     = "<Entra ID app registration client ID>"
 sharepointClientSecret = "<Entra ID app registration client secret>"
 sharepointTokenUrl     = "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token"

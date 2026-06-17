@@ -48,7 +48,7 @@ Open `Config.toml` and provide the following values:
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.mcp_server]
+[wso2.mcp_server]
 oracleDbHost = "localhost"
 oracleDbPort = 1521
 oracleDbName = "FREEPDB1"

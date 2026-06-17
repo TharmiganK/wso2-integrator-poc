@@ -1,5 +1,5 @@
 [package]
-org = "tharmigank"
+org = "wso2"
 name = "sap_client"
 version = "0.1.0"
 distribution = "2201.13.4"

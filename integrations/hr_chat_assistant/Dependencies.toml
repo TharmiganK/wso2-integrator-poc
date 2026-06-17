@@ -442,7 +442,7 @@ dependencies = [
 ]
 
 [[package]]
-org = "tharmigank"
+org = "wso2"
 name = "hr_chat_assistant"
 version = "0.1.0"
 dependencies = [
@@ -457,7 +457,7 @@ dependencies = [
 	{org = "wso2", name = "icp.runtime.bridge"}
 ]
 modules = [
-	{org = "tharmigank", packageName = "hr_chat_assistant", moduleName = "hr_chat_assistant"}
+	{org = "wso2", packageName = "hr_chat_assistant", moduleName = "hr_chat_assistant"}
 ]
 
 [[package]]

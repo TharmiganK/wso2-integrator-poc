@@ -54,13 +54,13 @@ Open `Config.toml` and provide the following values under the `sapConfig` record
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.sap_ecc_events.sapConfig]
+[wso2.sap_ecc_events.sapConfig]
 gwhost = "<gateway host>"
 gwserv = "sapgw00"
 progid = "<program id>"
 connectionCount = 2
 
-[tharmigank.sap_ecc_events.sapConfig.repositoryDestination]
+[wso2.sap_ecc_events.sapConfig.repositoryDestination]
 ashost = "<sap host>"
 sysnr = "00"
 jcoClient = "800"
@@ -83,13 +83,13 @@ passwd = "<password>"
 Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
 
 ```toml
-[tharmigank.sap_ecc_events.sapConfig]
+[wso2.sap_ecc_events.sapConfig]
 gwhost          = "<SAP ECC gateway hostname or IP>"
 gwserv          = "sapgw00"   # standard SAP gateway service name; change only if your system uses a different service
 progid          = "<program ID registered in the SAP RFC destination>"
 connectionCount = 2           # number of concurrent JCo server connections; increase for higher throughput
 
-[tharmigank.sap_ecc_events.sapConfig.repositoryDestination]
+[wso2.sap_ecc_events.sapConfig.repositoryDestination]
 ashost    = "<SAP ECC application server hostname or IP>"
 sysnr     = "<SAP system number e.g. 00>"
 jcoClient = "<SAP client/Mandant number e.g. 800>"

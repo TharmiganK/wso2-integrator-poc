@@ -51,7 +51,7 @@ Open `Config.toml` and provide the following values:
 
 **Example `Config.toml`:**
 ```toml
-[tharmigank.hubspot_to_oracledb]
+[wso2.hubspot_to_oracledb]
 hubspotToken = "<hubspot private app token>"
 clientSecret = "<oauth client secret>"
 callbackURL = "https://<your-public-url>"
