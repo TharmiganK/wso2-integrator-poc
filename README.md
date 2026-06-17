@@ -57,7 +57,65 @@ infrastructure/     Supporting services (databases, UI, observability)
 ## Prerequisites
 
 - **WSO2 Integrator** installed
+- **Java 21** (required by the Integration Control Plane)
 - Access credentials for the external systems used by each integration (see individual READMEs)
+
+## Setting Up the Integration Control Plane (ICP)
+
+The Integration Control Plane (ICP) is a self-hosted management server that provides a centralised dashboard for monitoring, managing, and troubleshooting all running integrations. All integrations in this project are pre-configured to connect to ICP.
+
+### 1. Install and start ICP
+
+1. Download the ICP distribution from the [WSO2 Integration Platform page](https://wso2.com/integration-platform/monitoring-and-management/).
+2. Extract the archive and start the server:
+
+   ```bash
+   unzip wso2-integration-control-plane-<version>.zip
+   cd wso2-integration-control-plane-<version>
+   ./bin/icp.sh        # Linux / macOS
+   .\bin\icp.bat       # Windows
+   ```
+
+3. Once started, the ICP console is available at **`https://localhost:9446`**.
+4. Sign in with the default credentials — username: `admin`, password: `admin`.
+
+> **Security note:** Change the default `admin` password before using ICP outside of local evaluation. Go to **Access Control > Users**, select the `admin` user, and click **Reset Password**.
+
+### 2. Generate a secret for each integration
+
+Each integration authenticates with ICP using a one-time secret:
+
+1. In the ICP console, go to **Projects** > **`<project>`** > **Integrations** > **`<integration>`** > **Runtimes**.
+2. Find the environment card (e.g. **dev**) and click **Add Runtime**.
+3. Click **Generate Secret** and copy the `Config.toml` snippet shown.
+
+> The secret is displayed only once — copy it before closing the dialog.
+
+### 3. Configure each integration
+
+Open each integration's `Config.toml` and add the `secret` field (and `serverUrl` if ICP is not on localhost) to the existing `[wso2.icp.runtime.bridge]` section:
+
+```toml
+[wso2.icp.runtime.bridge]
+environment = "dev"
+project     = "<project name>"
+integration = "<integration name>"
+runtime     = "<unique runtime identifier>"
+secret      = "<generated-secret>"
+# serverUrl = "https://<icp-host>:9445"   # uncomment if ICP is not on localhost
+```
+
+All integrations already have `remoteManagement = true` in their `Ballerina.toml` and the required `icp.runtime.bridge` import in `main.bal` — no further code changes are needed.
+
+### 4. Verify the connection
+
+Start an integration and check the ICP console under **Projects > Integrations > Runtimes**. The runtime status should change to **RUNNING** within a few seconds. The integration logs will confirm the connection:
+
+```
+ICP agent initialized with server URL: https://localhost:9445
+Sending full heartbeat to ICP server
+Full heartbeat acknowledged by ICP server
+```
 
 ## Setup
 
