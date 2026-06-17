@@ -37,19 +37,19 @@ Open `Config.toml` and provide the following values under the `sapConfig` record
 
 | Key | Description | Example |
 |---|---|---|
-| `sapConfig.gwhost` | Hostname or IP of the SAP ECC gateway | `54.205.90.79` |
+| `sapConfig.gwhost` | Hostname or IP of the SAP ECC gateway | `<host>` |
 | `sapConfig.gwserv` | SAP gateway service name or port | `sapgw00` |
-| `sapConfig.progid` | Program ID registered in the SAP RFC destination | `TEST_LISTENER` |
+| `sapConfig.progid` | Program ID registered in the SAP RFC destination | `<program-id>` |
 | `sapConfig.connectionCount` | Number of concurrent JCo server connections | `2` |
 
 ### SAP Repository Destination (used to fetch metadata from SAP)
 
 | Key | Description | Example |
 |---|---|---|
-| `sapConfig.repositoryDestination.ashost` | SAP application server hostname | `54.205.90.79` |
+| `sapConfig.repositoryDestination.ashost` | SAP application server hostname | `<host>` |
 | `sapConfig.repositoryDestination.sysnr` | SAP system number | `00` |
 | `sapConfig.repositoryDestination.jcoClient` | SAP client number | `800` |
-| `sapConfig.repositoryDestination.user` | SAP logon username | `TEST_USER` |
+| `sapConfig.repositoryDestination.user` | SAP logon username | `<username>` |
 | `sapConfig.repositoryDestination.passwd` | SAP logon password | `••••••••` |
 
 **Example `Config.toml`:**

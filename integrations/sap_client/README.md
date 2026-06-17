@@ -27,18 +27,18 @@ Open `Config.toml` and provide the following values:
 
 | Key | Description | Example |
 |---|---|---|
-| `sapEccHost` | Hostname or IP address of the SAP ECC application server | `54.205.90.79` |
+| `sapEccHost` | Hostname or IP address of the SAP ECC application server | `<host>` |
 | `sapEccSysnr` | SAP system number (two digits) | `00` |
 | `sapEccClientNum` | SAP client (Mandant) number | `800` |
-| `sapEccUser` | SAP logon username | `TEST_USER` |
-| `sapEccPasswd` | SAP logon password | `User@123` |
+| `sapEccUser` | SAP logon username | `<username>` |
+| `sapEccPasswd` | SAP logon password | `<password>` |
 
 ### SAP S/4HANA Connection
 
 | Key | Description | Example |
 |---|---|---|
-| `sapS4hanaHostName` | Hostname of the SAP S/4HANA Cloud tenant | `my401785.s4hana.cloud.sap` |
-| `sapS4hanaUserName` | SAP S/4HANA username | `THARMI` |
+| `sapS4hanaHostName` | Hostname of the SAP S/4HANA Cloud tenant | `<tenant>.s4hana.cloud.sap` |
+| `sapS4hanaUserName` | SAP S/4HANA username | `<username>` |
 | `sapS4hanaPassword` | SAP S/4HANA password | `••••••••` |
 
 ### IDoc Control Records

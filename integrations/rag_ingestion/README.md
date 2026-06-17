@@ -18,12 +18,12 @@ Open `Config.toml` and provide the following values:
 
 | Key | Description | Example |
 |---|---|---|
-| `sharepointClientId` | Entra ID app registration client ID | `75b2b93c-...` |
-| `sharepointClientSecret` | Entra ID app registration client secret | `08H8Q~...` |
+| `sharepointClientId` | Entra ID app registration client ID | `<client-id>` |
+| `sharepointClientSecret` | Entra ID app registration client secret | `<client-secret>` |
 | `sharepointTokenUrl` | OAuth 2.0 token endpoint for the tenant | `https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token` |
 | `sharepointClientScope` | Microsoft Graph API scope | `https://graph.microsoft.com/.default` |
-| `sharepointSiteId` | SharePoint site identifier | `globalsubs.sharepoint.com:/sites/connector-test` |
-| `sharepointFilePath` | Path to the document within the SharePoint site | `ACME/HR/ACME_HR_Policy_Manual.pdf` |
+| `sharepointSiteId` | SharePoint site identifier | `<tenant>.sharepoint.com:/sites/<site-name>` |
+| `sharepointFilePath` | Path to the document within the SharePoint site | `<folder>/<document.pdf>` |
 
 ### Pinecone
 
