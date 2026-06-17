@@ -13,12 +13,12 @@ Two log streams are handled:
 
 | Integration | App Log Path | Metrics Log Path |
 |---|---|---|
-| SAP Client | `sap_client/logs/app.log` | `sap_client/logs/metrics.log` |
-| HR Chat Assistant | `hr_chat_assistant/logs/app.log` | `hr_chat_assistant/logs/metrics.log` |
-| HubSpot to Oracle DB | `hubspot_to_oracledb/logs/app.log` | `hubspot_to_oracledb/logs/metrics.log` |
-| MCP Server | `mcp_server/logs/app.log` | `mcp_server/logs/metrics.log` |
-| RAG Ingestion | `rag_ingestion/logs/app.log` | `rag_ingestion/logs/metrics.log` |
-| SAP ECC Events | `sap_ecc_events/logs/app.log` | `sap_ecc_events/logs/metrics.log` |
+| SAP Client | `integrations/sap_client/logs/app.log` | `integrations/sap_client/logs/metrics.log` |
+| HR Chat Assistant | `integrations/hr_chat_assistant/logs/app.log` | `integrations/hr_chat_assistant/logs/metrics.log` |
+| HubSpot to Oracle DB | `integrations/hubspot_to_oracledb/logs/app.log` | `integrations/hubspot_to_oracledb/logs/metrics.log` |
+| MCP Server | `integrations/mcp_server/logs/app.log` | `integrations/mcp_server/logs/metrics.log` |
+| RAG Ingestion | `integrations/rag_ingestion/logs/app.log` | `integrations/rag_ingestion/logs/metrics.log` |
+| SAP ECC Events | `integrations/sap_ecc_events/logs/app.log` | `integrations/sap_ecc_events/logs/metrics.log` |
 
 ## Prerequisites
 
