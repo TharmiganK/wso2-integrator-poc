@@ -96,3 +96,44 @@ HubSpot requires a publicly accessible URL to deliver webhook events. When runni
 4. Edit `Config.toml` and fill in all required values
 5. Click **Run** in the WSO2 Integrator toolbar
 6. The webhook listener starts on port `8090` and begins processing HubSpot events
+
+---
+
+## Appendix: Sample Config.toml
+
+Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
+
+```toml
+hubspotToken  = "<HubSpot private app access token>"
+clientSecret  = "<HubSpot OAuth app client secret>"
+callbackURL   = "<publicly accessible URL for webhook delivery e.g. https://abc123.ngrok-free.app>"
+oracleDbHost  = "localhost"    # keep as-is if using the bundled oracle-db Docker setup
+oracleDbPort  = 1521           # keep as-is if using the bundled oracle-db Docker setup
+oracleDbName  = "FREEPDB1"     # keep as-is if using the bundled oracle-db Docker setup
+oracleDbUser  = "hr_user"      # keep as-is if using the bundled oracle-db Docker setup
+oracleDbPassword = "<Oracle DB password — HrUser_2025! if using the bundled setup>"
+
+[wso2.icp.runtime.bridge]
+environment = "dev"                      # match your ICP environment name
+project     = "<icp project name>"
+integration = "Hubspot Event To OracleDB" # must match the integration name registered in ICP
+runtime     = "<unique name for this runtime instance e.g. hostname>"
+secret      = "<secret generated from ICP console>"
+
+# ── Fixed values — do not change unless you have a specific reason ──
+
+[ballerina.observe]
+metricsLogsEnabled = true
+
+[ballerina.log]
+format = "logfmt"            # must be logfmt — required for Fluent Bit log parsing
+
+[[ballerina.log.destinations]]
+path = "./logs/app.log"      # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+
+[[ballerina.log.destinations]]
+type = "stdout"
+
+[ballerinax.metrics.logs]
+logFilePath = "./logs/metrics.log"   # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+```

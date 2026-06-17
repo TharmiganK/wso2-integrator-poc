@@ -75,3 +75,48 @@ passwd = "<password>"
 3. Edit `Config.toml` and fill in all required values
 4. Click **Run** in the WSO2 Integrator toolbar
 5. The integration registers with the SAP gateway and starts listening for inbound IDocs and RFC calls
+
+---
+
+## Appendix: Sample Config.toml
+
+Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
+
+```toml
+[tharmigank.sap_ecc_events.sapConfig]
+gwhost          = "<SAP ECC gateway hostname or IP>"
+gwserv          = "sapgw00"   # standard SAP gateway service name; change only if your system uses a different service
+progid          = "<program ID registered in the SAP RFC destination>"
+connectionCount = 2           # number of concurrent JCo server connections; increase for higher throughput
+
+[tharmigank.sap_ecc_events.sapConfig.repositoryDestination]
+ashost    = "<SAP ECC application server hostname or IP>"
+sysnr     = "<SAP system number e.g. 00>"
+jcoClient = "<SAP client/Mandant number e.g. 800>"
+user      = "<SAP logon username>"
+passwd    = "<SAP logon password>"
+
+[wso2.icp.runtime.bridge]
+environment = "dev"            # match your ICP environment name
+project     = "<icp project name>"
+integration = "SAP ECC Events" # must match the integration name registered in ICP
+runtime     = "<unique name for this runtime instance e.g. hostname>"
+secret      = "<secret generated from ICP console>"
+
+# ── Fixed values — do not change unless you have a specific reason ──
+
+[ballerina.observe]
+metricsLogsEnabled = true
+
+[ballerina.log]
+format = "logfmt"            # must be logfmt — required for Fluent Bit log parsing
+
+[[ballerina.log.destinations]]
+path = "./logs/app.log"      # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+
+[[ballerina.log.destinations]]
+type = "stdout"
+
+[ballerinax.metrics.logs]
+logFilePath = "./logs/metrics.log"   # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+```

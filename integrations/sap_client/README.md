@@ -73,3 +73,56 @@ idocOrdersControlRecord = {SNDPRN = "<sender>", RCVPRN = "<receiver>"}
 2. Edit `Config.toml` and fill in all required values
 3. Click **Run** in the WSO2 Integrator toolbar
 4. The integration starts and the REST API is accessible on the configured host and port
+
+---
+
+## Appendix: Sample Config.toml
+
+Copy this file, replace all `<...>` placeholders with your actual values. Values shown without a placeholder are fixed and should remain as-is unless noted.
+
+```toml
+[tharmigank.sap_client]
+sapEccHost      = "<SAP ECC application server hostname or IP>"
+sapEccSysnr     = "<SAP system number e.g. 00>"
+sapEccClientNum = "<SAP client/Mandant number e.g. 800>"
+sapEccUser      = "<SAP logon username>"
+sapEccPasswd    = "<SAP logon password>"
+sapS4hanaHostName = "<SAP S/4HANA Cloud hostname e.g. my123456.s4hana.cloud.sap>"
+sapS4hanaUserName = "<SAP S/4HANA username>"
+sapS4hanaPassword = "<SAP S/4HANA password>"
+
+[tharmigank.sap_client.idocDebmasControlRecord]
+SNDPRN = "<sending logical system name for DEBMAS IDocs>"
+RCVPRN = "<receiving logical system name for DEBMAS IDocs>"
+
+[tharmigank.sap_client.idocOrdersControlRecord]
+SNDPRN = "<sending logical system name for ORDERS IDocs>"
+RCVPRN = "<receiving logical system name for ORDERS IDocs>"
+
+[wso2.icp.runtime.bridge]
+environment = "dev"          # match your ICP environment name
+project     = "<icp project name>"
+integration = "SAP Client"   # must match the integration name registered in ICP
+runtime     = "<unique name for this runtime instance e.g. hostname>"
+secret      = "<secret generated from ICP console>"
+
+# ── Fixed values — do not change unless you have a specific reason ──
+
+[ballerina.http]
+defaultListenerPort = 9091   # HTTP port this integration listens on; change only if there is a port conflict
+
+[ballerina.observe]
+metricsLogsEnabled = true
+
+[ballerina.log]
+format = "logfmt"            # must be logfmt — required for Fluent Bit log parsing
+
+[[ballerina.log.destinations]]
+path = "./logs/app.log"      # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+
+[[ballerina.log.destinations]]
+type = "stdout"
+
+[ballerinax.metrics.logs]
+logFilePath = "./logs/metrics.log"   # must match the path configured in infrastructure/fluent-bit/fluent-bit.conf
+```
