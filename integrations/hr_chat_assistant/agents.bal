@@ -251,7 +251,14 @@ Decline pattern (one sentence only, no apology loop):
 * Keep responses concise. If the answer is a number, lead with the number.
 * No bullet overload. Use a list only when there are 3+ distinct items.
 * Never apologise for not knowing something — just call the right tool.`
-    }, memory = assistantMemory, model = wso2ModelProvider, tools = [getCurrentDateTime, mcpServer, retrieveHRPolicies, getCurrentUserId]
+    }, memory = assistantMemory,
+    model = azureOpenaimodelprovider,
+    tools = [
+        getCurrentDateTime,
+        // mcpServer, 
+        retrieveHRPolicies,
+        getCurrentUserId
+    ]
 );
 final ai:ShortTermMemory assistantMemory = check new ();
 
@@ -292,8 +299,9 @@ isolated class McpServerToolkit {
 # + return - The RAG Response
 @ai:AgentTool
 isolated function retrieveHRPolicies(string query) returns string|error {
-    ai:QueryMatch[] queryMatchResults = check knowledgeBase.retrieve(string `${query}`);
-    return queryMatchResults.toString();
+    ai:QueryMatch[] aiQuerymatch = check azureAisearchknowledgebase.retrieve(string `${query}`);
+
+    return aiQuerymatch.toString();
 }
 
 # Get the curred logged in user ID. Always use this to get the user ID rather than trusting the user prompt
