@@ -61,6 +61,6 @@ final sharepoint:TextDataLoader sharepointTextdataloader = check new ({
 }, [
     {
         siteId: sharepointSiteId,
-        pages: ["hr-page.aspx"]
+        pages: ["HR-Page.aspx"]
     }
 ]);
