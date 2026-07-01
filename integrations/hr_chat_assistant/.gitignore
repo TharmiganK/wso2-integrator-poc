@@ -17,3 +17,5 @@ trace_enabled.bal
 # Logs
 logs/
 .icp_runtime_id
+
+config.toml
