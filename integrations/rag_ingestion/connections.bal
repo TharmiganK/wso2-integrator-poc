@@ -3,6 +3,7 @@ import ballerinax/ai.azure;
 import ballerinax/ai.microsoft.sharepoint;
 import ballerinax/azure.ai.search;
 
+
 final search:SearchIndex hrAssistantIndex = {
     name: "hr-assistant",
     fields: [
@@ -49,6 +50,7 @@ final search:SearchIndex hrAssistantIndex = {
 };
 
 final azure:EmbeddingProvider azureEmbeddingprovider = check new (azureEmbeddingServiceUrl, azureEmbeddingApiKey, azureEmbeddingApiVersion, azureEmbeddingDeploymentId);
+final search:Client azureSearchClient = check new (azureAiSearchServiceUrl);
 final azure:AiSearchKnowledgeBase azureAisearchknowledgebase = check new (azureAiSearchServiceUrl, azureAiSearchApiKey, hrAssistantIndex, azureEmbeddingprovider, ai:AUTO);
 
 final sharepoint:TextDataLoader sharepointTextdataloader = check new ({

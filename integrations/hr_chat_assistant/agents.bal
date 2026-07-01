@@ -258,7 +258,8 @@ Decline pattern (one sentence only, no apology loop):
         // mcpServer, 
         retrieveHRPolicies,
         getCurrentUserId
-    ]
+    ],
+    maxIter = 30
 );
 final ai:ShortTermMemory assistantMemory = check new ();
 
@@ -299,8 +300,7 @@ isolated class McpServerToolkit {
 # + return - The RAG Response
 @ai:AgentTool
 isolated function retrieveHRPolicies(string query) returns string|error {
-    ai:QueryMatch[] aiQuerymatch = check azureAisearchknowledgebase.retrieve(string `${query}`);
-
+    ai:QueryMatch[] aiQuerymatch = check azureAisearchknowledgebase.retrieve(string `${query}`, 10);
     return aiQuerymatch.toString();
 }
 
